@@ -1,0 +1,77 @@
+
+\documentclass[11pt,a4paper]{report}
+%%\usepackage[dutch]{babel}               % For Dutch hyphenations (wordsplitting)
+\usepackage{amsmath}                    % Extended math options
+\usepackage{amssymb}                    % For special symbols, like collections Z,Q,R, etc.
+\usepackage{epsfig}                     % To handle .eps figures
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% General settings of the document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setlength{\parindent}{0cm}             % No indent at first line of paragraphs
+\renewcommand{\baselinestretch}{1.2} 	% More spacing between lines
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% New comments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Differential operator
+\newcommand{\diff}{\ensuremath{\mathrm{d}}} 
+
+% Super and subscript
+\newcommand{\supsc}[1]{\ensuremath{^{\text{#1}}}}   % Superscript in text
+\newcommand{\subsc}[1]{\ensuremath{_{\text{#1}}}}   % Subscript in text
+
+\newcommand{\vt}[1]{\ensuremath{\boldsymbol{#1}}} % vector in correct lettertype
+\newcommand{\mx}[1]{\ensuremath{\mathsf{#1}}}	  % matrix in correct lettertype
+
+\newcommand{\omex}{\boldsymbol{\omega}_x}
+
+
+\newcommand{\firstauth}[2]{\vspace{-\bibsepup}{\sc #1{,} #2}} %
+\newcommand{\auth}[2]{{\sc #1{,} #2}} % use comment as \auth{Luppes}{R.}
+\newcommand{\bibc}{{,} }              % separation between authors; no space!
+\newcommand{\biba}{ and }             % last separation between authors
+\newcommand{\noopsort}[1]{}           % correct bibliography order wrt year
+\newlength{\bibsepup}                 % bibitems a bit higher \bibsepup;
+\setlength{\bibsepup}{2.0mm}          % prevents too much spacing
+\newcommand{\etal}{et al.}            % xspace would give too much space !
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End of the preamble.
+% Beginning of body:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Special word splittings
+\hyphenation{back-slash}
+\hyphenation{split-sings-uit-zon-de-ring}
+
+\title{A Very Nice Article}
+\author{John Johnson, Pete Peterson \& Chris Chistofferson\\
+Institute of Problem Solvers\\
+Groningen}
+\date{May 2014}
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Position for a short summary.
+Keep it really short!
+\end{abstract}
+
+\tableofcontents
+
+% The various chapters
+\input{file1}
+
+
+
+\end{document}
+
