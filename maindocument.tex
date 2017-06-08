@@ -1,23 +1,12 @@
 
 \documentclass[11pt,a4paper]{report}
-%%\usepackage[dutch]{babel}               % For Dutch hyphenations (wordsplitting)
 \usepackage{amsmath}                    % Extended math options
 \usepackage{amssymb}                    % For special symbols, like collections Z,Q,R, etc.
 \usepackage{epsfig}                     % To handle .eps figures
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% General settings of the document
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \setlength{\parindent}{0cm}             % No indent at first line of paragraphs
 \renewcommand{\baselinestretch}{1.2} 	% More spacing between lines
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% New comments
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Differential operator
 \newcommand{\diff}{\ensuremath{\mathrm{d}}} 
@@ -41,37 +30,39 @@
 \setlength{\bibsepup}{2.0mm}          % prevents too much spacing
 \newcommand{\etal}{et al.}            % xspace would give too much space !
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End of the preamble.
 % Beginning of body:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Special word splittings
 \hyphenation{back-slash}
 \hyphenation{split-sings-uit-zon-de-ring}
 
-\title{A Very Nice Article}
-\author{John Johnson, Pete Peterson \& Chris Chistofferson\\
-Institute of Problem Solvers\\
-Groningen}
-\date{May 2014}
-
+\title{Tea with a Travelling Salesman:\\
+	\large A Discussion of Genetic Algorithms}
+\author{Karin Dijkstra, Anastasia Dryaeva, Rick Ploeg \& Oliver Strik\\
+Propaedeutic Project: A11\\
+Rijksuniversiteit Groningen}
+\date{June 6 2017}
+ 
 
 \begin{document}
 
 \maketitle
 
 \begin{abstract}
-Position for a short summary.
-Keep it really short!
+Abstract needs to be copied here!
 \end{abstract}
 
 \tableofcontents
 
 % The various chapters
-\input{GAonalargerscale}
-
-
+%\input{Introduction}
+%\input{What is a Genetic Algorithm?}
+%\input{How does the Genetic Algorithm perform on a simple TSP?}
+\input{GAonlargerscale}
+%\input{Analysis}
+%\input{Discussion, issues, further research and conclusion}
+%\input{References}
 
 \end{document}
 
