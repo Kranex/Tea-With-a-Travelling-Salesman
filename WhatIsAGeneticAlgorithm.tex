@@ -1,11 +1,12 @@
 \chapter{What is a Genetic Algorithm?}
+\section{basic}
+\par
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=0.5\textwidth]{GA_Structure}
 	\caption{The basic structure of a Genetic Algorithm.}
 	\label{struct}
 \end{figure}
-\par
 A Genetic Algorithm is an algorithm that uses natural selection, or survival of the fittest, to find a solution to a problem. All Genetic Algorithms follow a similar, if not identical structure (figure \ref{struct}). However, the elements of this structure are highly customised for each specific application. Before going into detail about these elements, the concept of chromosomes must first be introduced.
 \par
 Chromosomes are one of the most important part of a GA, their only purpose is to store the potential solutions of the problem. How chromosomes store these solutions is up to the constructor of the GA, commonly however they are a single string that might represent a binary number, or possibly a list of the problems variables. Another important thing about chromosomes is their fitness. The fitness function of a GA describes how fit a particular problem is as a solution. How this fitness works, and how fitnesses are compared is again nearly entirely up to the constructor of the GA.
