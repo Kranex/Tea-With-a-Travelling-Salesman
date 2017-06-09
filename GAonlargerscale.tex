@@ -135,22 +135,22 @@ The result of implementing this into the GA was that it increased the time for o
 
 \section{Further expanding the TSP}
 \par
-The GA is more than capable of dealing with a further expansion of the TSP, since it gave solutions in about a minute for the TSP, containing 26 cities. Therefore in this section, the GA will be applied to a TSP containing 50 cities, still all located throughout the Netherlands. Here the number of possible tours takes on the extremely high value of:
+The GA is more than capable of dealing with a further expansion of the TSP, since when it contained 26 cities it gave solutions in approximately a minute. Therefore in this section, the GA will be applied to a TSP containing 50 cities, still all located throughout the Netherlands. Here the number of possible tours is the extremely high value of:
 \[n = \frac{(26-1)!}{2} = 3.0414093e+62\]
-The GA itself accounts for even more tours, namely $50! = 3.0414093e+64$. Attempting a manual method, like the Hungarian Algorithm, is simply not doable because of these incredibly high numbers.
+To put this number in perspective, there are more possible tours for this problem than there are atoms in the earth. Moreover, the GA itself accounts for even more tours, namely $50! = 3.0414093e+64$. Considering that traditional methods, like the Hungarian Algorithm or the BIP, were concluded to be unsuitable for the TSP consisting of 26 cities, they can be concluded even more unsuitable for this TSP, containing 50 cities.
 
-\begin{wrapfigure}{r}{0.5\textwidth}
-	\vspace{-0.5cm}
+\begin{wrapfigure}{r}{0.43\textwidth}
+	\vspace{-0.4cm}
 	\centering
-		\includegraphics[width=0.48\textwidth]{1623tour}	
-	\captionof{figure}{The tour with a total distance of 1623 kilometers}
+		\includegraphics[width=0.41\textwidth]{1623tour}	
+	\captionof{figure}{The tour of 1623 kilometers}
 	\label{1623tour}
 \end{wrapfigure}
 
 \par
-The first observation to note is again an increase in time. Where the GA took 1 minute to complete the set number of generations for a TSP of 26 cities, the GA now takes 6 minutes with the same settings. Yet 6 minutes is a very short amount of time if one considers the number of possibilities given in the previous paragraph. The GA still suffers from premature convergence and in order to work around that issue, the GA was set to run 600 times, saving the final solutions to an external file. The best solution given by the GA was a tour of 1623 kilometers. This tour is shown in figure \ref{1623tour}.  
+The first observation to note is again an increase in time. Where the GA took 1 minute to complete the set number of generations for a TSP of 26 cities, the GA now takes 6 minutes with the same settings. Yet 6 minutes is a very short amount of time if one considers the number of possibilities, given in the previous paragraph. The GA still suffers from premature convergence and in order to work around that issue, the GA was set to run 600 times, saving the final solutions to an external file. Out of all these runs, the best solution, given by the GA, was a tour of 1623 kilometers. This tour is shown in figure \ref{1623tour}. Because of the large number of possible tours, it cannot be said with certainty that this tour is in fact the global optimum 
 
-\clearpage
+
 \section{Conclusions}
 \par
 This chapter has dealt with the question: How does the GA perform on a problem of larger scale? This problem contained 26 cities located throughout the Netherlands. The GA was still capable of converging to a solution however, these solutions are not necessarily the optimal tour. In other words, the program suffered from premature convergence. One method was examined to prevent this from happening, but without success. It is also outside of the range of this research to prevent the premature convergence. While it is true that the GA will sometimes give a tour that is not the global optimum, the chance of selecting a better tour by random choice is very very low due to the sheer amount of possible tours. 
