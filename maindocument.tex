@@ -1,12 +1,18 @@
 
 \documentclass[11pt,a4paper]{report}
+%\pagestyle{headings} Might be interested in this
+
 \usepackage{amsmath}                    % Extended math options
 \usepackage{amssymb}                    % For special symbols, like collections Z,Q,R, etc.
-\usepackage{graphicx}                     % To handle .eps figures
-
-
-\setlength{\parindent}{0cm}             % No indent at first line of paragraphs
-\renewcommand{\baselinestretch}{1.2} 	% More spacing between lines
+\usepackage{graphicx}                     % To handle png and jpg figures
+\usepackage{array}				% To handel complicated tables
+\usepackage{caption}				% Allows captions with figures and tables
+\usepackage[export]{adjustbox}		% To align images right and left 
+\usepackage{indentfirst}			% Standard paragraph indent
+\usepackage{wrapfig}				% For wrapping texts around figures and tables
+\usepackage{capt-of}				% Caption extension
+\usepackage{float}
+\usepackage{geometry}
 
 % Differential operator
 \newcommand{\diff}{\ensuremath{\mathrm{d}}} 
@@ -57,7 +63,7 @@ Abstract needs to be copied here!
 
 % The various chapters
 %\input{Introduction}
-\input{WhatIsAGeneticAlgorithm}
+%\input{WhatIsAGeneticAlgorithm}
 %\input{How does the Genetic Algorithm perform on a simple TSP?}
 \input{GAonlargerscale}
 %\input{Analysis}
