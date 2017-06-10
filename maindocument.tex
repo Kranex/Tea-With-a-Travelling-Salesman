@@ -23,18 +23,8 @@
 
 \newcommand{\vt}[1]{\ensuremath{\boldsymbol{#1}}} % vector in correct lettertype
 \newcommand{\mx}[1]{\ensuremath{\mathsf{#1}}}	  % matrix in correct lettertype
-
 \newcommand{\omex}{\boldsymbol{\omega}_x}
 
-
-\newcommand{\firstauth}[2]{\vspace{-\bibsepup}{\sc #1{,} #2}} %
-\newcommand{\auth}[2]{{\sc #1{,} #2}} % use comment as \auth{Luppes}{R.}
-\newcommand{\bibc}{{,} }              % separation between authors; no space!
-\newcommand{\biba}{ and }             % last separation between authors
-\newcommand{\noopsort}[1]{}           % correct bibliography order wrt year
-\newlength{\bibsepup}                 % bibitems a bit higher \bibsepup;
-\setlength{\bibsepup}{2.0mm}          % prevents too much spacing
-\newcommand{\etal}{et al.}            % xspace would give too much space !
 
 % End of the preamble.
 % Beginning of body:
@@ -61,14 +51,15 @@ Abstract needs to be copied here!
 
 \tableofcontents
 
-% The various chapters
+%The various chapters
 %\input{Introduction}
 \input{WhatIsAGeneticAlgorithm}
 %\input{How does the Genetic Algorithm perform on a simple TSP?}
 \input{GAonlargerscale}
 %\input{Analysis}
 %\input{Discussion, issues, further research and conclusion}
-%\input{Bibliography}
+\input{Conclusion}
+\input{References}
 
 \end{document}
 

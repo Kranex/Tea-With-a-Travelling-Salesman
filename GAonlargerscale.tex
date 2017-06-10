@@ -47,7 +47,7 @@ For this expansion it was decided to extend the problem to 26 cities. To make th
 	\begin{minipage}[c]{0.6\textwidth} 
 		\centering
 			\includegraphics[width=1.2\textwidth, center]{26cities}
-		\captionof{figure}{26 cities, marked on the map of the Netherlands}
+		\captionof{figure}{26 cities, marked on the map of the Netherlands\cite{Google}}
 		\label{map1}
 	\end{minipage}
 \end{table}
@@ -69,7 +69,7 @@ The first observation, when the GA was applied to the expanded TSP, was that the
 	\begin{center}
 		\includegraphics[width=0.48\textwidth]{1406tour}
 	\end{center}	
-	\captionof{figure}{The tour with a total distance of 1406 kilometers}
+	\captionof{figure}{The tour with a total distance of 1406 kilometers \cite{Google}}
 	\label{1406tour}
 \end{wrapfigure}
 
@@ -90,7 +90,7 @@ In order to find out why the GA gave multiple solutions, a new variable was intr
 \end{wrapfigure}
 
 Premature convergence is when the GA converges too early, to a local optimum.
-It can be visualized by figure \ref{PrematureConvergence}. This graph, representing a one-dimensional problem, shows multiple peaks, several being local optima and one being the global optimum. When the program converges to a local optimum, i is unlikely to get past that local optimum to a better solution. Due to the concept of “survival of the fittest”, the best solution in the pool has the highest chance of being selected as a parent. If that best solution is in the neighborhood of a local optimum, then the majority of its children will also be in the neighborhood of that local optimum. In the following crossovers, a pool is generated with more and more chromosomes that are clustered around this local optimum. In other words, the selected parents cannot create children that are superior than they are themselves. Therefore the GA will not get past the local optimum during crossover. Moreover, the population loses its diversity as the program goes through the set number of generations, this is believed to be the main reason for the occurrence of premature convergence %referenceneeded. 
+It can be visualized by figure \ref{PrematureConvergence}. This graph, representing a one-dimensional problem, shows multiple peaks, several being local optima and one being the global optimum. When the program converges to a local optimum, i is unlikely to get past that local optimum to a better solution. Due to the concept of “survival of the fittest”, the best solution in the pool has the highest chance of being selected as a parent. If that best solution is in the neighborhood of a local optimum, then the majority of its children will also be in the neighborhood of that local optimum. In the following crossovers, a pool is generated with more and more chromosomes that are clustered around this local optimum. In other words, the selected parents cannot create children that are superior than they are themselves. Therefore the GA will not get past the local optimum during crossover. Moreover, the population loses its diversity as the program goes through the set number of generations, this is believed to be the main reason for the occurrence of premature convergence \cite{Premconvergence}\cite{Popdiv}\cite{Congress}.
 
 \par
 To obtain a chromosome, which is better than the current best solution in the pool, mutation is the only hope. As already mentioned by equation, there are 7.755605e+24 possible tours if duplicates and mirrored solutions are excluded. The GA however, does not necessarily exclude duplicated and mirrored tours, therefore the number of tours that the GA accounts for is: 26! = 4.0329146e+26. The size of this number makes the chance of randomly mutating a tour to a better solution than a local optimum very small. Even changing the rate of mutation, thus making the mutation more frequent and aggressive, will not prevent premature convergence. It is therefore also a frequent problem, encountered when applying GAs to optimization problems. 
@@ -98,7 +98,7 @@ To obtain a chromosome, which is better than the current best solution in the po
 \section{Incest Prevention}
 
 \par
-There are different methods of dealing with premature convergence. H. Pandey, A. Chaudhary and D. Mehrotra discuss 24 methods in their article “A comparative review of approaches to prevent premature convergence in GA”. In this section one of those methods will be discussed, namely incest prevention. Incest prevention is preventing two identical parents from breeding. During a crossover where two identical solutions are selected as the parents, two children will be created that are both identical to their parents and to each other. By constantly breeding with two identical parents, the generated pool quickly loses its diversity, which is the main cause of premature convergence. Which part of the parents is selected does not influence the outcome of such a crossover. Take for example a crossover between two identical parents, both containig six indices:
+There are different methods of dealing with premature convergence. H. Pandey, A. Chaudhary and D. Mehrotra discuss 24 methods in their article \textit{A comparative review of approaches to prevent premature convergence in GA}\cite{Premconvergence}. In this section one of those methods will be discussed, namely incest prevention. Incest prevention is preventing two identical parents from breeding. During a crossover where two identical solutions are selected as the parents, two children will be created that are both identical to their parents and to each other. By constantly breeding with two identical parents, the generated pool quickly loses its diversity, which is the main cause of premature convergence. Which part of the parents is selected does not influence the outcome of such a crossover. Take for example a crossover between two identical parents, both containig six indices:
 \newline
 \textit{Parent 1} =  0 1 2 3 4 5 
 \newline
@@ -143,7 +143,7 @@ To put this number in perspective, there are more possible tours for this proble
 	\vspace{-0.4cm}
 	\centering
 		\includegraphics[width=0.41\textwidth]{1623tour}	
-	\captionof{figure}{The tour of 1623 kilometers}
+	\captionof{figure}{The tour of 1623 kilometers \cite{Google}}
 	\label{1623tour}
 \end{wrapfigure}
 
