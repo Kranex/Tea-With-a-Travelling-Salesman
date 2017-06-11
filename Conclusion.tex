@@ -1,2 +1,10 @@
-\chapter{Conclusion}
+\chapter{Conclusions}
 \par
+In the Introduction of this article, the following question was asked: How does a Genetic Algorithm perform when applied to the Travelling Salesman Problem?
+This article has provided the general concept of a GA, together with a detailed explanation of the construction and characteristics of such an algorithm for the TSP. Further more, the performance of the constructed GA has been discussed on small and larger TSPs. 
+
+\par
+For small problems, the GA converges to the global optimum in every run and therefore performes well. More traditional methods, like the Hungarian Algorithm and the BIP, are also capable of finding the optimal tour. However, when the TSP takes on a larger scale, these traditional methods are highly inefficient, because of the time they need to find a solution. Even though the GA also needs more time, when the TSP expands, it is still capable of finding a solution within minutes, which is a lot faster than the other mentioned methods. Another benefit of the GA is that it can be applied to any TSP without a reconstruction given that the neccesary data, consisting of the number of cities and their distances to each other, is provided. 
+
+\par
+The GA does not only have advantages, there are downsides as well. One of the disadvantages of applying a GA to a TSP is premature convergence. This means that the GA is not bound to give the global optimal tour in every run, but will instead also converge to local optimals. Premature convergence only occurs when the TSP becomes of a larger scale. Several methods to prevent or work around the issue of premature convergence exist \cite{Premconvergence} and they open doors for further research into this GA. 
