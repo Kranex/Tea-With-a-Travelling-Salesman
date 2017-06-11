@@ -18,13 +18,13 @@ From the extracted data a multitude of statements can be made about the properti
 To analyse the effect of changes in the poolsize on the program, the GA was run with a poolsize of 10 to 1000 in steps of 10. However, since the GA still relies on random events at its core, the GA wasn’t simply run once for a specific poolsize, but 15 times instead to reduce the chance of getting irregular results significantly. Of these 15 trials, the average is taken of their objective value and other interesting statistics such as the time it took, while also selecting the most-and least optimal one for later reference.
 The actual graphing of the data generated can be seen below and it’s immediately very clear that the ‘objective value’ converges towards 1406 which is the already established optimal tour in this TSP. The noteworthy thing here is that an increase in poolsize has minimal effect on the expected objective value, but more on the spread of the points.
 
-	\includegraphics[height=8cm]{OVP}
+	\includegraphics[height=6cm]{OVP}
 
 \par
 Now let’s take a look at the graphing of the poolsize against the time taken. 
 This graph below follows a surprisingly smooth curve which clearly is not linear but it’s hard to tell what relation it does follow. The current guess is that it is a quadratic relation but this will be investigated in a program designed for curve-fitting.
 
-	\includegraphics[height=8cm]{CTP}
+	\includegraphics[height=6cm]{CTP}
 
 
 \par
@@ -43,26 +43,26 @@ One way to reduce the spikes would be to repeatedly run the GA and consider the 
 \par
 The way that the effect of the generations parameter has on the performances of the GA has been analysed much like that of the poolsize and the first part is the effects of changes in the amount of generations versus the the time spent computing of which the graph can be seen below.
 \begin{centering}
-	\includegraphics[height=8cm]{CTG}
+	\includegraphics[height=6cm]{CTG}
 \end{centering}
 \par
 The relation between the two can clearly be seen to be proportional. This makes sense intuitively since if the amount of generations would be doubled and the amount of calculations per generation would remain the same, then the total amount of calculations, and therefore the time needed to do the calculations, would double as well, and hence the linear relation.
 \par
 The graph of ‘objective value’ yields something interesting because, in contrary to the same graph of the poolsize, it does not reduce its spikes when the amount of generations increase.
 
-	\includegraphics[height=8cm]{OVG}
+	\includegraphics[height=6cm]{OVG}
 
 \par
 This can be explained by considering that after a certain point, the GA will have converged to some optimum and throwing more generations on it will not increase the chances of jumping to a better one. Instead the GA will stick with it’s found optimum for the whole of the extra added generations.
 
-
+\newpage
 \section{The elites percentage}
 
 \par
 The effects of different values of the percentage of elites on the program have been analysed by considering how the computing time and the objective value behave and more specifically, the quality of the objective value and its standard deviation.
 In the first graph below it can be seen that the relation between the objective value and the elites percentage is quite stable. That is, if the outer edges are not considered because both extremes result in very poor convergence.
 
-	\includegraphics[height=8cm]{OVEP}
+	\includegraphics[height=6cm]{OVEP}
 
 \par The reason that the side with a too small elites percentage does converge significantly worse than that with other values for this parameter is because the program is effectively completely missing out on elites which are a vital part of the GA.
 \vspace{5mm}
@@ -73,12 +73,12 @@ The next graph shows a linear but decreasing relation between the elites percent
 So there should be treaded carefully around the illusion that a higher percentage of elites leads to a faster program. Instead the program just does less calculations.
 \par
 \begin{centering}
-	\includegraphics[height=8cm]{CTEP}
+	\includegraphics[height=6cm]{CTEP}
 \end{centering}
 Then finally, the next graph shows the standard deviation of the objective value for different values of the elites percentages. It can be seen that the elites percentage obtains optimal consistency around 30 percent of the poolsize.
 \par
 
-	\includegraphics[height=8cm]{SDEP}
+	\includegraphics[height=6cm]{SDEP}
 
 
 
@@ -87,7 +87,7 @@ When considering the rate of mutation in the program, it is intuitively clear th
 The statement about the time needed can quickly be verified by the graph below, and indeed there it can be seen that there is not a notable effect on the computation time.
 \par
 \begin{centering}
-		\includegraphics[height=8cm]{CTRM}
+		\includegraphics[height=6cm]{CTRM}
 \end{centering}
 
 
@@ -96,12 +96,12 @@ The statement about the time needed can quickly be verified by the graph below, 
 Below this, the plotting of the objective value versus the rate of mutation can be found, and it can be seen that there seems to be a very slight decreasing factor in there. But more notably is the little dip it attains around a rate of mutation of 30 percent. It doesn’t look like much but it should be kept in mind that the minimum this graph could ever obtain is 1406. and since this little dip comes consistently close to that particular value it is a very significant drop.
 \par
 \begin{centering}
-\includegraphics[height=8cm]{OVRM}
+\includegraphics[height=6cm]{OVRM}
 \end{centering}
 The drop around the 30 percent mark can perhaps better be considered in the next graph of the standard deviation versus the rate of mutation, and much like the previous graph there is a very notable drop around this value for the rate of mutation. The existence of this dip also immediately explains the dip in the previous graph since the program tries to get to 1406 all the time, but at these values it can do so more consistently hence the lower average of the objective value.
 \par
 \begin{centering}
-\includegraphics[height=8cm]{SDRM}
+\includegraphics[height=6cm]{SDRM}
 \end{centering}
 \section{Conclusion}
 
@@ -117,10 +117,10 @@ If the goal is to increase the potency of the GA while limiting the extra added 
 \vspace{5mm}
 Finally, considering the consistency of the GA, it already has been mentioned that both the elites percentage and rate of mutation give optimal consistency around a value of 30. Additionally, considering the poolsize and the amount of generations the standard deviation of those parameters are shown in the two graphs below. And it should be clear through the spikiness of the graphs that the standard deviation related to the amount of generations is generally constant in contrary to that of the poolsize since that seems to generally be decreasing. This means that the recommended settings for the goal of increasing the consistency can be concluded to be a minimal investment in the generations, a value between 30 and 50 for the elites percentage and a poolsize as big as the available computational power allows.
 
-\includegraphics[height=8cm]{SDG}
+\includegraphics[height=6cm]{SDG}
 \par
 \vspace{10mm}
-\includegraphics[height=8cm]{SDP}
+\includegraphics[height=6cm]{SDP}
 
 
 
