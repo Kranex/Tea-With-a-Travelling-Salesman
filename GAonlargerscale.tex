@@ -8,9 +8,9 @@ The details of the TSP, such as the number of cities and their locations, will b
 \subsection{A TSP containing 26 cities} %Introducing the 26 cities TSP
 For this expansion it was decided to extend the problem to 26 cities. To make the problem more realistic, these 26 cities were selected to be located throughout the Netherlands. 
 
-\begin{table} [t]
-\parbox{0.4\textwidth}{
-
+\begin{table}[ht]
+\begin{minipage}[L]{0.2\linewidth}
+	\centering
 	\begin{tabular}{l}
 		1 Amersfoort\\ 
 		2 Amsterdam\\
@@ -40,21 +40,22 @@ For this expansion it was decided to extend the problem to 26 cities. To make th
 		26 Zwolle
 	\end{tabular}
 	\label{26cities}
-}
-\qquad
-	\begin{minipage}[c]{0.6\textwidth} 
+	
+\end{minipage}
+\hfill
+	\begin{minipage}[R]{0.8\linewidth} 
 		\centering
-			\includegraphics[width=1.2\textwidth, center]{26cities}
+			\includegraphics[width=0.8\linewidth, right]{26cities}
 		\captionof{figure}{26 cities, marked on the map of the Netherlands\cite{Google}}
 		\label{map1}
 	\end{minipage}
 \end{table}
 
-%\newpage
+
 \par
 The 26 cities are listed in alphabetical order together with a map of the Netherlands (figure \ref{map1}), that marks all of their locations. The objective is thus to find the shortest route that visits all of these cities and returns to the starting point afterwards. The total number of possible tours here is calculated by equation: %future reference needed
-\[n = \frac{(26-1)!}{2} =  7.755605e+24\]
-This number is significantly larger than the 60 possible tours for the simple TSP, discussed in chapter 2. This is then also the reason why most other methods fail to give a solution or are just inefficient. The manual methods and traditional methods, discussed in the previous chapter, are excellent examples. The Hungarian Algorithm already took 2 hours to perform on a TSP, containing only six cities and even though it did give the optimal solution in the end, it is highly inefficient to apply to this TSP because of the time it would take. In addition, this algorithm is a manual method, which makes it susceptible for human errors. The BIP also fails to give a solution, because the number of integer variables exceeds the limit of the Microsoft Excel linear solver. Even without this limit of variables, a BIP would take a long time to construct, considering all the possible subtours that would have to be added to the program as constraints in order to make sure that the resulting tour meets the criteria, set by the TSP. All of these subtours have to be excluded by manually adding these constraints, which makes the BIP timewise an inefficient method.Therefore it is necessary to turn to other methods, such as Genetic Algorithms. Even though they are not bound to give the optimal solution, they are at least capable of giving a suitable tour that meets the criteria, set by the TSP.
+\[n = \frac{(26-1)!}{2} =  7.755605e+24.\]
+This number is significantly larger than the 60 possible tours for the simple TSP, discussed in section 2. This is then also the reason why most other methods fail to give a solution or are just inefficient. The manual methods and traditional methods, discussed in the previous section, are excellent examples. The Hungarian Algorithm already took 2 hours to perform on a TSP, containing only six cities and even though it did give the optimal solution in the end, it is highly inefficient to apply to this TSP because of the time it would take. In addition, this algorithm is a manual method, which makes it susceptible for human errors. The BIP also fails to give a solution, because the number of integer variables exceeds the limit of the Microsoft Excel linear solver. Even without this limit of variables, a BIP would take a long time to construct, considering all the possible subtours that would have to be added to the program as constraints in order to make sure that the resulting tour meets the criteria, set by the TSP. All of these subtours have to be excluded by manually adding these constraints, which makes the BIP timewise an inefficient method. Therefore it is necessary to turn to other methods, such as Genetic Algorithms. Even though they are not bound to give the optimal solution, they are at least capable of giving a suitable tour that meets the criteria, set by the TSP.
 
 
 
@@ -71,7 +72,7 @@ The first observation, when the GA was applied to the expanded TSP, was that the
 	\label{1406tour}
 \end{wrapfigure}
 
-The next observation was that, while the GA still converged to a solution in every run, these solutions differed from each other. They did not show the same tour nor did they share the same total distance. The solutions seemed to span a reach of approximately 100 kilometers, the lowest solution having a total distance of 1406 kilometer. The tour, belonging to this solution of 1406 kilometers, is shown in the figure below. During the analysis of the constructed GA, the program never gave a tour with a lower distance than this 1406 kilometers. We therefore believe this solution could well be the optimal tour however, due to the large amount of possible tours, this cannot be said with full certainty. 
+The next observation was that, while the GA still converged to a solution in every run, these solutions differed from each other. They did not show the same tour nor did they share the same total distance. The solutions seemed to span a reach of approximately 100 kilometers, the lowest solution having a total distance of 1406 kilometer. The tour, belonging to this solution of 1406 kilometers, is shown in figure \ref{1406tour}. During the analysis of the constructed GA, the program never gave a tour with a lower distance than this 1406 kilometers. We therefore believe this solution could well be the optimal tour however, due to the large amount of possible tours, this cannot be said with full certainty. 
 
 %\clearpage
 \par
@@ -88,7 +89,7 @@ In order to find out why the GA gave multiple solutions, a new variable was intr
 \end{wrapfigure}
 
 Premature convergence is when the GA converges too early, to a local optimum.
-It can be visualized by figure \ref{PrematureConvergence}. This graph, representing a one-dimensional problem, shows multiple peaks, several being local optima and one being the global optimum. When the program converges to a local optimum, i is unlikely to get past that local optimum to a better solution. Due to the concept of “survival of the fittest”, the best solution in the pool has the highest chance of being selected as a parent. If that best solution is in the neighborhood of a local optimum, then the majority of its children will also be in the neighborhood of that local optimum. In the following crossovers, a pool is generated with more and more chromosomes that are clustered around this local optimum. In other words, the selected parents cannot create children that are superior than they are themselves. Therefore the GA will not get past the local optimum during crossover. Moreover, the population loses its diversity as the program goes through the set number of generations, this is believed to be the main reason for the occurrence of premature convergence \cite{Premconvergence}\cite{Popdiv}\cite{Congress}.
+It can be visualized by figure \ref{PrematureConvergence}. This graph, representing a one-dimensional problem, shows multiple peaks, several being local optima and one being the global optimum. When the program converges to a local optimum, it is unlikely to get past that local optimum to a better solution. Due to the concept of “survival of the fittest”, the best solution in the pool has the highest chance of being selected as a parent. If that best solution is in the neighborhood of a local optimum, then the majority of its children will also be in the neighborhood of that local optimum. In the following crossovers, a pool is generated with more and more chromosomes that are clustered around this local optimum. In other words, the selected parents cannot create children that are superior than they are themselves. Therefore the GA will not get past the local optimum during crossover. Moreover, the population loses its diversity as the program goes through the set number of generations, this is believed to be the main reason for the occurrence of premature convergence \cite{Premconvergence}\cite{Popdiv}\cite{Congress}.
 
 \par
 To obtain a chromosome, which is better than the current best solution in the pool, mutation is the only hope. As already mentioned by equation, there are 7.755605e+24 possible tours if duplicates and mirrored solutions are excluded. The GA however, does not necessarily exclude duplicated and mirrored tours, therefore the number of tours that the GA accounts for is: 26! = 4.0329146e+26. The size of this number makes the chance of randomly mutating a tour to a better solution than a local optimum very small. Even changing the rate of mutation, thus making the mutation more frequent and aggressive, will not prevent premature convergence. It is therefore also a frequent problem, encountered when applying GAs to optimization problems. 
@@ -97,32 +98,27 @@ To obtain a chromosome, which is better than the current best solution in the po
 
 \par
 There are different methods of dealing with premature convergence. H. Pandey, A. Chaudhary and D. Mehrotra discuss 24 methods in their article \textit{A comparative review of approaches to prevent premature convergence in GA}\cite{Premconvergence}. In this section one of those methods will be discussed, namely incest prevention. Incest prevention is preventing two identical parents from breeding. During a crossover where two identical solutions are selected as the parents, two children will be created that are both identical to their parents and to each other. By constantly breeding with two identical parents, the generated pool quickly loses its diversity, which is the main cause of premature convergence. Which part of the parents is selected does not influence the outcome of such a crossover. Take for example a crossover between two identical parents, both containig six indices:
-\newline
-\textit{Parent 1} =  0 1 2 3 4 5 
-\newline
-\textit{Parent 2} =  0 1 2 3 4 5 
-\newline
-In the first crossover a part of the first parent is selected and the remaining indices are provided in the order they appear in the second parent. This could happen in the following way: 
-\newline
-\textit{Parent 1}: - 1 2 3 - -                 
-\newline
-\textit{Parent 2}: 0 - - - 4 5
-\newline
-This leads to \textit{Child 1}: 0 1 2 3 4 5
 
+\[\textit{Parent 1} =  [0,1,2,3,4,5]\]  
+\[\textit{Parent 2} =  [0,1,2,3,4,5]\]
+
+\noindent In the first crossover a part of the first parent is selected and the remaining indices are provided in the order they appear in the second parent. This could happen in the following way: 
+
+\[\textit{Parent 1}: [-,1,2,3,-,-]\]       
+\[\textit{Parent 2}:[0,-,-,-,4,5]\]
+
+This leads to: \[\textit{Child 1}: [0,1,2,3,4,5]\]
 \par
 From this first child, it can be easily seen that the second child will also be identical to the parents and its sibling. However, this only happens, when both of the parents are completely identical, meaning that both their tour and starting location have to be the same. For example a crossover between the parents, depicted below, does not necessarily lead to a child that is identical to the parents, even though they share the same tour:
-\newline
-\textit{Parent 1} =  0 1 2 3 4 5 
-\textit{Parent 2} =  2 3 4 5 0 1 %make them equations
+
+\[\textit{Parent 1} =  [0,1,2,3,4,5]\] 
+\[\textit{Parent 2} =  [2,3,4,5,0,1]\]
 In the first crossover, where a subset from the first parent is selected and the remaining parts of the chromosome are given by the second parent, this could happen:
- \newline
-Parent 1: - 1 2 3 - -                 
-\newline
-Parent 2: - - 4 5 0 -
-\newline
-This leads to \textit{Child 1}: 4 1 2 3 5 0
- \newline
+
+\[\textit{Parent 1}: [-,1,2,3,-,-]\]               
+\[\textit{Parent 2}: [-,-,4,5,0,-]\]
+This leads to: \[\textit{Child 1}: [4,1,2,3,5,0]\]
+
 Even though both parents contained the same tour, their child does not share it. Incest prevention therefore focuses on only eliminating crossovers between two identical parents. Incest prevention therefore focuses on only eliminating crossovers between two identical parents.
 
 \par
@@ -134,7 +130,7 @@ The result of implementing this into the GA was that it increased the time for o
 \subsection{Further expanding the TSP}
 \par
 The GA is more than capable of dealing with a further expansion of the TSP, since when it contained 26 cities it gave solutions in approximately a minute. Therefore in this section, the GA will be applied to a TSP containing 50 cities, still all located throughout the Netherlands. Here the number of possible tours is the extremely high value of:
-\[n = \frac{(26-1)!}{2} = 3.0414093e+62\]
+\[n = \frac{(50-1)!}{2} = 3.0414093e+62\]
 To put this number in perspective, there are more possible tours for this problem than there are atoms in the earth. Moreover, the GA itself accounts for even more tours, namely $50! = 3.0414093e+64$. Considering that traditional methods, like the Hungarian Algorithm or the BIP, were concluded to be unsuitable for the TSP consisting of 26 cities, they can be concluded even more unsuitable for this TSP, containing 50 cities.
 
 \begin{wrapfigure}{r}{0.43\textwidth}
@@ -146,10 +142,10 @@ To put this number in perspective, there are more possible tours for this proble
 \end{wrapfigure}
 
 \par
-The first observation to note is again an increase in time. Where the GA took 1 minute to complete the set number of generations for a TSP of 26 cities, the GA now takes 6 minutes with the same settings. Yet 6 minutes is a very short amount of time if one considers the number of possibilities, given in the previous paragraph. The GA still suffers from premature convergence and in order to work around that issue, the GA was set to run 600 times, saving the final solutions to an external file. Out of all these runs, the best solution, given by the GA, was a tour of 1623 kilometers. This tour is shown in figure \ref{1623tour}. Because of the large number of possible tours, it cannot be said with certainty that this tour is in fact the global optimum 
+The first observation to note is again an increase in time. Where the GA took 1 minute to complete the set number of generations for a TSP of 26 cities, the GA now takes 6 minutes with the same settings. Yet 6 minutes is a very short amount of time if one considers the number of possibilities, given in the previous paragraph. The GA still suffers from premature convergence and in order to work around that issue, the GA was set to run 600 times, saving the final solutions to an external file. Out of all these runs, the best solution, given by the GA, was a tour of 1623 kilometers. This tour is shown in figure \ref{1623tour}. Because of the large number of possible tours, it cannot be said with certainty that this tour is in fact the global optimum. 
 
 
 \subsection{Conclusions}
 \par
-This chapter has dealt with the question: How does the GA perform on a problem of larger scale? This problem contained 26 cities located throughout the Netherlands. The GA was still capable of converging to a solution however, these solutions are not necessarily the optimal tour. In other words, the program suffered from premature convergence. One method was examined to prevent this from happening, but without success. It is also outside of the range of this research to prevent the premature convergence. While it is true that the GA will sometimes give a tour that is not the global optimum, the chance of selecting a better tour by random choice is very very low due to the sheer amount of possible tours. 
+This section has dealt with the question: How does the GA perform on a problem of larger scale? This problem contained 26 cities located throughout the Netherlands. The GA was still capable of converging to a solution however, these solutions are not necessarily the optimal tour. In other words, the program suffered from premature convergence. One method was examined to prevent this from happening, but without success. It is also outside of the range of this research to prevent the premature convergence. While it is true that the GA will sometimes give a tour that is not the global optimum, the chance of selecting a better tour by random choice is very very low due to the sheer amount of possible tours. 
 
