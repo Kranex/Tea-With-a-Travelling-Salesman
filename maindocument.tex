@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage{geometry}
 \usepackage[font={footnotesize,it}]{caption}	%Making the captions smaller and italic
+\usepackage{csquotes}		
 
 % Differential operator
 \newcommand{\diff}{\ensuremath{\mathrm{d}}} 
@@ -52,13 +53,16 @@ Abstract needs to be copied here!
 \tableofcontents
 
 %The various chapters
-%\input{Introduction}
+\input{Introduction}
+\addcontentsline{toc}{section}{Introduction}
 \input{WhatIsAGeneticAlgorithm}
-%\input{How does the Genetic Algorithm perform on a simple TSP?}
+\input{SimpleTSP}
 \input{GAonlargerscale}
 \input{analysis}
 %\input{Discussion, issues, further research and conclusion}
+\addtocontents{toc}{\vspace{\normalbaselineskip}}
 \input{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
 \input{References}
 
 \end{document}
