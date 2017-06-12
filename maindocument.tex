@@ -1,5 +1,5 @@
 
-\documentclass[11pt,a4paper]{report}
+\documentclass[11pt,a4paper]{article}
 %\pagestyle{headings} Might be interested in this
 
 \usepackage{amsmath}                    % Extended math options
@@ -45,24 +45,25 @@ Rijksuniversiteit Groningen}
 \begin{document}
 
 \maketitle
-
+\clearpage
 \begin{abstract}
 Abstract needs to be copied here!
 \end{abstract}
 
+\clearpage
 \tableofcontents
 
 %The various chapters
 \input{Introduction}
-\addcontentsline{toc}{section}{Introduction}
+%\addcontentsline{toc}{section}{Introduction}
 \input{WhatIsAGeneticAlgorithm}
-\input{SimpleTSP}
+%\input{SimpleTSP}
 \input{GAonlargerscale}
 \input{analysis}
 %\input{Discussion, issues, further research and conclusion}
-\addtocontents{toc}{\vspace{\normalbaselineskip}}
+%\addtocontents{toc}{\vspace{\normalbaselineskip}}
 \input{Conclusion}
-\addcontentsline{toc}{section}{Conclusion}
+%\addcontentsline{toc}{section}{Conclusion}
 \input{References}
 
 \end{document}
