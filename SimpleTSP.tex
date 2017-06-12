@@ -4,7 +4,7 @@
 \section{Introduction}
 
 \par
-In 1832, a German handbook for traveling salesmen was published, titled ''Der Handlungsreisende – wie er sein soll und was er zu tun hat, um Aufträge zu erhalten und eines glücklichen Erfolgs in seinen Geschäften gewiß zu sein – von einem alten Commis-Voyageur'' \footnote{%
+In 1832, a German handbook for traveling salesmen was published, titled ''Der Handlungsreisende – wie er sein soll und was er zu tun hat, um Aufträge zu erhalten und eines glücklichen Erfolgs in seinen Geschäften gewiß zu sein – von einem alten Commis-Voyageur''\footnote{%
 	from German: ''The Traveling Salesman - how he should be and what he has to do, in order to obtain commissions and to be assured of great success in his business - by an old Commis-Voyageur''.}. 
  The book contains a definition and an elaborate description of the problem, as well as the first ever recorded reference to it as ''the Traveling Salesman Problem'', but does not give a mathematical treatment for it. 
  
@@ -47,7 +47,6 @@ B (1, 3.5)   & D (2.5, 7) &F (10, 1.5)\\
 
 \begin{figure}[ht] 
 \centering
-\vspace{-9mm}
 \includegraphics[height=7.5cm]{6citymap}
 \caption{\textsl{6 city map}}
 \label{6citymap}
@@ -55,17 +54,14 @@ B (1, 3.5)   & D (2.5, 7) &F (10, 1.5)\\
 
 These can be represented on a 2-dimensional map as shown in figure \ref{6citymap}
 
+\vspace{5mm}
 
-\par
 Knowing the coordinates of the points, the distance between every pair of points can be calculated, using the formula $XY=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$  for points $X(x_1, x_2)$ and $Y(y_1, y_2)$.
 
 \vspace{5mm}
 
 The results can be represented as a matrix, where element in column $X$ and row $Y$ (as well as element in row $X$ and column $Y$) represents distance $XY$. For the given points A to F the matrix is shown in figure \ref{distancematrix}. In the future, it will be referred to as “the distance matrix”.
 
-\vspace{5mm}
-
-Note that the diagonal, which corresponds to the distance between the city and itself, is not defined, since such a tour is not allowed.
 
 \begin{figure}[bh] 
 	\centering
@@ -73,6 +69,9 @@ Note that the diagonal, which corresponds to the distance between the city and i
 	\caption{\textsl{The distance matrix}}
 	\label{distancematrix}
 \end{figure}
+
+
+Note that the diagonal, which corresponds to the distance between the city and itself, is not defined, since such a tour is not allowed.
 
 
 
@@ -88,19 +87,21 @@ We will now proceed to solving our 6-city problem, while simultaneously explaini
 
 \vspace{5mm}
 
+\noindent
 \underline{Step 1: Row and column reduction}
 \vspace{1mm}
 
+\noindent
 Begin with the distance matrix (figure \ref{distancematrix}). Identify the smallest element in every row, and subtract it from every element in that row; then do the same for every column. The resulting matrix will have a zero in each row and each column.
 
 \vspace{5mm}
-
+\noindent
 As such, the original distance matrix reduces to the following:
 \vspace{3mm}
 
 \includegraphics[height=6cm]{dmreduced}
 	
-	
+\noindent	
 In Little’s article, he elaborates on why this works, explaining:
 \vspace{-1mm}
 
@@ -108,26 +109,31 @@ In Little’s article, he elaborates on why this works, explaining:
 ''If a constant is subtracted from each element of the first row (of the distance matrix), that constant is subtracted from the cost of every tour. This is because every tour must include one and only one element from the first row. The relative costs of all tours, however, are unchanged and so the tour which would be optimal is unchanged. The same argument can be applied to the columns.	''
 \end{displayquote}
 	
-	
+\noindent	
 \underline{Step 2: Penalty calculation}	
 \vspace{1mm}
-	
+
+\noindent	
 For each zero in the new matrix note the sum between the minimum element in the row and the minimum element in the column of that zero (omitting the zero itself). That number is called the penalty associated with the zero.
 
 \vspace{5mm}
 
-Therefore, the penalty associated with the zero in position AB is 0.63, since the smallest element in row A is 0.63, and smallest element in column B is 0. Similarly, the penalty of the zero in position BD is 1.21, and so on. The complete matrix displaying all the penalties is shown in the figure below:	
-\vspace{3mm}
+Therefore, the penalty associated with the zero in position AB is 0.63, since the smallest element in row A is 0.63, and smallest element in column B is 0. Similarly, the penalty of the zero in position BD is 1.21, and so on. The complete matrix displaying all the penalties is shown in the figure below.	
+\vspace{5mm}
+	
+	
+It is interesting to note, that although Little’s work describes the same process, it doesn’t refer to those numbers as “the penalties".
 	
 \includegraphics[height=6cm]{dmpenalties}
 	
-It is interesting to note, that although Little’s work describes the same process, it doesn’t refer to those numbers as “the penalties".
 
 \vspace{5mm}
 
+\noindent
 \underline{Step 3: Row and column elimination}
 \vspace{1mm}
 
+\noindent
 Select the zero with the highest penalty. If there is more than one zero with the same penalty, select arbitrarily. The row and column of that zero can be eliminated from the matrix, and its position noted down as part of the optimum tour.
 
 \vspace{5mm}
@@ -141,46 +147,54 @@ In our case the zero in position BD has the highest penalty. Therefore, BD is th
 
 \vspace{5mm}
 
+\noindent
 \underline{Step 4: Repeat steps 1 to 3}
 \vspace{1mm}
 
+\noindent
 For the new matrix, repeat all the steps from the beginning: first row and column reduction, then penalty calculation, and row and column elimination, until reaching a 2x2 matrix. If no mistakes have been made, 3 elements will be zeros with penalty of zero, and the remaining element undefined. In such a matrix, only two roads are possible, and they will be the last entries on the list of roads, forming a complete tour.
 
 \vspace{5mm}
 
+\noindent
 Our 6-city problem eventually reduces to the following 2x2 matrix:
 \vspace{3cm}
 
 %\includegraphics[height=2.5cm]{2x2matrix}
 
+\noindent
 With the following assignments already made:
+\begin{center}
 \par B $\rightarrow$ D, 
 \par A $\rightarrow$ B, 
 \par C $\rightarrow$ A, 
 \par E $\rightarrow$ F.
+\end{center}
 
-\vspace{3mm}
-
+\noindent
 The full step-by-step process can be seen in the appendix *** %\ref{appendix2}
 
 \vspace{5mm}
 
+\noindent
 We complete this list by selecting assignments F $\rightarrow$ C and D $\rightarrow$ E from figure *** %\ref{2x2matrix}
 which gives us the following tour:
 
 \vspace{2mm}
 
+\begin{center}
 A $\rightarrow$ B $\rightarrow$ D $\rightarrow$ E $\rightarrow$ F $\rightarrow$ C $\rightarrow$ A
+\end{center}
 
 
 \begin{figure}[ht] 
 	\centering
-	\vspace{-9mm}
 	\includegraphics[height=7.5cm]{6citytour}
 	\caption{\textsl{Final tour}}
 	\label{6citytour}
 \end{figure}
 
+\noindent
 Looking back at the distance matrix (figure \ref{distancematrix}), the total distance of this tour is 26.95
 
 
@@ -205,9 +219,11 @@ y_{ij}=
 	
 
 \vspace{5mm}
+\noindent
 Then, the BIP formulation of the TSP is:
 \vspace{5mm}	
 
+\noindent
 Minimize
 
 \vspace{-3mm}	
@@ -215,12 +231,13 @@ Minimize
 $z = \sum_{i} \sum_{j} x_{ij}y_{ij}$
 \end{center}	 
 
+\noindent
 such that
 \vspace{-3mm}	
 \begin{center}
-	\sum_{i} $y_{ij}=1$ for all $j$,
+	$\sum_{i} y_{ij}=1$ for all $j$,
 	
-	\sum_{j} $y_{ij}$=1 for all $i$,
+	$\sum_{j} y_{ij}=1$ for all $i$,
 	
 	And $y_{ij}$ binary for all $i$, $j$.
 \end{center}	
@@ -232,7 +249,7 @@ This can be implemented into Excel and solved using the Solver function.
 Since nowhere in the current formulation of the problem there is a constraint that requires the solution to be one single connected tour, it is highly likely that the solution will contain subtours. However, the TSP does not allow for subtours, so they need to be eliminated with additional constraints.
 \vspace{5mm}
 
-Using the distance matrix from figure \ref{distancematrix} for the $x_{ij}$ values, and after manually eliminating all subtours, the BIP gives the solution $z=26.95$, which tour A $\rightarrow$ B $\rightarrow$ D $\rightarrow$ E $\rightarrow$ F $\rightarrow$ C $\rightarrow$ A, which is the same result as the one obtained via the Hungarian Algorithm in section 2.3
+Using the distance matrix from figure \ref{distancematrix} for the $x_{ij}$ values, and after manually eliminating all subtours, the BIP gives the solution $z=26.95$, whith tour A $\rightarrow$ B $\rightarrow$ D $\rightarrow$ E $\rightarrow$ F $\rightarrow$ C $\rightarrow$ A, which is the same result as the one obtained via the Hungarian Algorithm in section 2.3
 	
 	
 	
