@@ -6,6 +6,7 @@ Considering the characteristics of a Genetic Algorithm, one can assume that they
 The details of the TSP, such as the number of cities and their locations, will be addressed in the next section of this chapter. Then in the third section, the first performance of the GA on this TSP will be discussed. Since the total of possible tours was relatively low for the simple TSP, discussed in the previous chapter, the GA was capable of finding the optimal tour in every run. In this larger TSP however, the number of tours is significantly larger, which meant that the GA did not find the optimal tour in every run. This problem is known as premature convergence and is the topic of the fourth section. In the last section of this chapter a possible method to prevent premature convergence is discussed.
 
 \subsection{A TSP containing 26 cities} %Introducing the 26 cities TSP
+\par
 For this expansion it was decided to extend the problem to 26 cities. To make the problem more realistic, these 26 cities were selected to be located throughout the Netherlands. 
 
 \begin{table}[ht]
@@ -51,13 +52,9 @@ For this expansion it was decided to extend the problem to 26 cities. To make th
 	\end{minipage}
 \end{table}
 
-
-\par
-The 26 cities are listed in alphabetical order together with a map of the Netherlands (figure \ref{map1}), that marks all of their locations. The objective is thus to find the shortest route that visits all of these cities and returns to the starting point afterwards. The total number of possible tours here is calculated by equation: %future reference needed
+The 26 cities are listed in alphabetical order together with a map of the Netherlands (figure \ref{map1}), that marks all of their locations. The objective is thus to find the shortest route that visits all of these cities and returns to the starting point afterwards. The total number of possible tours here is calculated by the equation: %future reference needed
 \[n = \frac{(26-1)!}{2} =  7.755605e+24.\]
 This number is significantly larger than the 60 possible tours for the simple TSP, discussed in section 2. This is then also the reason why most other methods fail to give a solution or are just inefficient. The manual methods and traditional methods, discussed in the previous section, are excellent examples. The Hungarian Algorithm already took 2 hours to perform on a TSP, containing only six cities and even though it did give the optimal solution in the end, it is highly inefficient to apply to this TSP because of the time it would take. In addition, this algorithm is a manual method, which makes it susceptible for human errors. The BIP also fails to give a solution, because the number of integer variables exceeds the limit of the Microsoft Excel linear solver. Even without this limit of variables, a BIP would take a long time to construct, considering all the possible subtours that would have to be added to the program as constraints in order to make sure that the resulting tour meets the criteria, set by the TSP. All of these subtours have to be excluded by manually adding these constraints, which makes the BIP timewise an inefficient method. Therefore it is necessary to turn to other methods, such as Genetic Algorithms. Even though they are not bound to give the optimal solution, they are at least capable of giving a suitable tour that meets the criteria, set by the TSP.
-
-
 
 \subsection{The performance of the GA} %About the performance of the GA
 \par
@@ -66,7 +63,7 @@ The first observation, when the GA was applied to the expanded TSP, was that the
 \begin{wrapfigure}{r}{0.5\textwidth}
 	\vspace{-1cm}
 	\begin{center}
-		\includegraphics[width=0.48\textwidth]{1406tour}
+		\includegraphics[width=0.5\textwidth]{1406tour}
 	\end{center}	
 	\captionof{figure}{The tour with a total distance of 1406 kilometers \cite{Google}}
 	\label{1406tour}
@@ -133,13 +130,12 @@ The GA is more than capable of dealing with a further expansion of the TSP, sinc
 \[n = \frac{(50-1)!}{2} = 3.0414093e+62\]
 To put this number in perspective, there are more possible tours for this problem than there are atoms in the earth. Moreover, the GA itself accounts for even more tours, namely $50! = 3.0414093e+64$. Considering that traditional methods, like the Hungarian Algorithm or the BIP, were concluded to be unsuitable for the TSP consisting of 26 cities, they can be concluded even more unsuitable for this TSP, containing 50 cities.
 
-\begin{wrapfigure}{r}{0.43\textwidth}
-	\vspace{-0.4cm}
-	\centering
-		\includegraphics[width=0.41\textwidth]{1623tour}	
+\begin{figure}[t!]
+\centering
+\includegraphics{1623tour}
 	\captionof{figure}{The tour of 1623 kilometers \cite{Google}}
-	\label{1623tour}
-\end{wrapfigure}
+\label{1623tour}
+\end{figure}
 
 \par
 The first observation to note is again an increase in time. Where the GA took 1 minute to complete the set number of generations for a TSP of 26 cities, the GA now takes 6 minutes with the same settings. Yet 6 minutes is a very short amount of time if one considers the number of possibilities, given in the previous paragraph. The GA still suffers from premature convergence and in order to work around that issue, the GA was set to run 600 times, saving the final solutions to an external file. Out of all these runs, the best solution, given by the GA, was a tour of 1623 kilometers. This tour is shown in figure \ref{1623tour}. Because of the large number of possible tours, it cannot be said with certainty that this tour is in fact the global optimum. 
@@ -148,4 +144,5 @@ The first observation to note is again an increase in time. Where the GA took 1 
 \subsection{Conclusions}
 \par
 This section has dealt with the question: How does the GA perform on a problem of larger scale? This problem contained 26 cities located throughout the Netherlands. The GA was still capable of converging to a solution however, these solutions are not necessarily the optimal tour. In other words, the program suffered from premature convergence. One method was examined to prevent this from happening, but without success. It is also outside of the range of this research to prevent the premature convergence. While it is true that the GA will sometimes give a tour that is not the global optimum, the chance of selecting a better tour by random choice is very very low due to the sheer amount of possible tours. 
+
 
