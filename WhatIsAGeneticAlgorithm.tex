@@ -12,7 +12,7 @@ Chromosomes are one of the most important parts of a GA, their only purpose is t
 
 \subsection{Initialisation of the Pool}
 \par
-The first step in the execution of a Genetic algorithm is the generation of the pool. The pool is a collection of chromosomes that can be described as the "current generation". This pool is initialised by randomly generating chromosomes until the pool is filled, in the case of the research algorithm, this was done by shuffling the list of cities to construct a tour. Shuffling a list that contains each city only once eliminates the possibility of missing or having duplicate cities within the chromosome which is one of the constraints of the Travelling Salesman Problem. The number of chromosomes in the pool is usually a fixed number, however adaptive pool sizing does exist (http://www.sciencedirect.com/science/article/pii/S2212671613000449) only fixed pool size was used in this research. 
+The first step in the execution of a Genetic algorithm is the generation of the pool. The pool is a collection of chromosomes that can be described as the "current generation". This pool is initialised by randomly generating chromosomes until the pool is filled, in the case of the research algorithm, this was done by shuffling the list of cities to construct a tour. Shuffling a list that contains each city only once eliminates the possibility of missing or having duplicate cities within the chromosome which is one of the constraints of the Travelling Salesman Problem. The number of chromosomes in the pool is usually a fixed number, however adaptive pool sizing does exist only fixed pool size was used in this research \cite{populationsize}. 
 \subsection{The Main Loop}
 \par
 This next section comprises the main body of the GA. Every time this loop is completed, a generation has passed. Throughout the next sections, the methods used in the research algorithm will be used as examples.
@@ -28,7 +28,7 @@ Where $inv$ is the 'Inversion constant', $minFit$ is the smallest/best fitness i
 Using these equations, the probability of selection for each chromosome in the pool could be calculated, thus allowing for parents to be selected from the pool using these probabilities.
 \subsubsection{Crossover}\label{crossover}
 \par
-\begin{figure}[h]
+\begin{figure}[H]
 \textit{Step 1: The children start as duplicates of the parents that have been selected. Also a range of genes is randomly selected, in this example genes 3 to 5 and they are shown in green.}
 \[Parent\, 1: [0,3,\colorbox{green}{2,5,1},4]\]
 \[Parent\, 2: [1,3,\colorbox{green}{5,0,4},2]\]
@@ -54,20 +54,20 @@ Using these equations, the probability of selection for each chromosome in the p
 Crossover (also known as breeding) is when two chromosomes, called parents, are 'crossed' together to produce one or more children. There are many ways of doing this, from slicing the parents in half and swapping the ends, to more complicated methods like the one used in the research algorithm shown in Figure \ref{fig:cross}. 
 \subsubsection{Mutation}
 \par
-\begin{figure}[h]
+\begin{figure}[H]
 \[Before: [0,3,\colorbox{green}{2},5,1,\colorbox{red}{4}]\]
 \[After: [0,3,\colorbox{red}{4},5,1,\colorbox{green}{2}]\]
-\caption{Example of the swap mutation used in the research algorithm \label{fig:mut}}
+\caption{Example of the swap mutation used in the research algorithm. \label{fig:mut}}
 \end{figure}
-Every child produced in Section \ref{crossover} has a chance of mutation, this is when the chromosome is subjected to a small but random change. In the case of the research algorithm, a specific form of mutation called swap mutation was used where two genes within the chromosome are randomly selected and then swapped, this is shown in Figure \ref{fig:mut}. Also, in the research algorithm, a chance of mutating multiple times was used with each subsequent mutation being less and less probable.
+Every child produced in Section \ref{crossover} has a chance of mutation, this is when the chromosome is subjected to a small but random change. In the case of the research algorithm, a specific form of mutation called swap mutation was used where two genes within the chromosome are randomly selected and then swapped, this is shown in Figure \ref{fig:mut}, this particular method of mutation does not invalidate the tour a chromosome describes, since it does not cause duplicate cities nor does it remove cities. Also, in the research algorithm, a chance of mutating multiple times was used, with each subsequent mutation being less and less probable.
 \subsection{Termination}
 \par
-The final step in the Genetic algorithm is termination. At the end of every generation, it is questioned whether the GA has met a specific criteria, if it has then the GA terminates and the best solution in the gene pool is the solution you finish with, otherwise it continues and begins a new generation.
+The final step in the Genetic algorithm is termination. At the end of every generation, it is questioned whether the GA has met a specific criterion, if it has then the GA terminates and the best solution in the gene pool is the solution you finish with, otherwise it continues and begins a new generation.
 \par
-The criteria for termination can be nealy anything and are usually rather specific to the problem, however the are some generic ones, for example having found a solution that is better than a given solution or the simplest being having completed a given number of generations.
+The criteria for termination can be nearly anything and are usually rather specific to the problem, however there are some generic ones, for example having found a solution that is fitter than a given solution or having completed a given number of generations.
 \subsection{The Research Framework}
 \par
-The Genetic Algorithm that was constructed for this research is divided into two components, the first being the Genetic Algorithm Framework (REFERENCE), and the second being a script which integrates with the framework.
+The Genetic Algorithm that was constructed for this research is divided into two components, the first being the Genetic Algorithm Framework, and the second being a script which integrates with the framework \cite{Code}.
 The GAFramework is actually quite a simple program, it was designed for the research, however even though the research was specifically on the Traveling Salesman Problem, the GAF is capable of being used for any problem. It simply passes data to the scripts and provides the scripts some generic functionality such as a chromosome object and a loop function.
 The script is the main bulk of the program as it is responsible for defining and solving a specific problem. The script constructed to solve the research problems was designed to be a generic script for Traveling Salesman Problems, when provided with a raw text file containing either a distance matrix or the coordinates for each city, it will proceed to solve the problem regardless of size. The script can also be given variables such as the size of chromosome pool, or the percentage of the pool to make elites. 
 
