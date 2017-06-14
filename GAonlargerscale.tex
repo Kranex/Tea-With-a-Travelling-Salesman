@@ -85,7 +85,7 @@ In order to find out why the GA gave multiple solutions, a new variable was intr
 	\label{PrematureConvergence}
 \end{wrapfigure}
 
-Premature convergence is when the GA converges too early, to a local optimum.
+Premature convergence is when the GA converges too early, to a local optimum \cite{Slides}.
 It can be visualized by figure \ref{PrematureConvergence}. This graph, representing a one-dimensional problem, shows multiple peaks, several being local optima and one being the global optimum. When the program converges to a local optimum, it is unlikely to get past that local optimum to a better solution. Due to the concept of “survival of the fittest”, the best solution in the pool has the highest chance of being selected as a parent. If that best solution is in the neighborhood of a local optimum, then the majority of its children will also be in the neighborhood of that local optimum. In the following crossovers, a pool is generated with more and more chromosomes that are clustered around this local optimum. In other words, the selected parents cannot create children that are superior than they are themselves. Therefore the GA will not get past the local optimum during crossover. Moreover, the population loses its diversity as the program goes through the set number of generations, this is believed to be the main reason for the occurrence of premature convergence \cite{Premconvergence}\cite{Popdiv}\cite{Congress}.
 
 \par
@@ -130,7 +130,7 @@ The GA is more than capable of dealing with a further expansion of the TSP, sinc
 \[n = \frac{(50-1)!}{2} = 3.0414093e+62\]
 To put this number in perspective, there are more possible tours for this problem than there are atoms in the earth. Moreover, the GA itself accounts for even more tours, namely $50! = 3.0414093e+64$. Considering that traditional methods, like the Hungarian Algorithm or the BIP, were concluded to be unsuitable for the TSP consisting of 26 cities, they can be concluded even more unsuitable for this TSP, containing 50 cities.
 
-\begin{figure}[t!]
+\begin{figure}[H]
 \centering
 \includegraphics{1623tour}
 	\captionof{figure}{The tour of 1623 kilometers \cite{Google}}
