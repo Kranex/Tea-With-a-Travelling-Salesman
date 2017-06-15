@@ -13,6 +13,7 @@ Chromosomes are one of the most important parts of a GA, their only purpose is t
 \subsection{Initialisation of the Pool}
 \par
 The first step in the execution of a Genetic Algorithm is the generation of the pool. The pool is a collection of chromosomes that can be described as the "current generation". This pool is initialised by randomly generating chromosomes until the pool is filled, in the case of the research algorithm, this was done by shuffling the list of cities to construct a tour. Shuffling a list that contains each city only once eliminates the possibility of missing or having duplicate cities within the chromosome which is one of the constraints of the Travelling Salesman Problem. The number of chromosomes in the pool is usually a fixed number, however adaptive pool sizing does exist \cite{populationsize}. However only fixed pool size was used in this research. 
+
 \subsection{The Main Loop}
 \par
 This next section comprises the main body of the GA. Every time this loop is completed, a generation has passed. Throughout the next sections, the methods used in the research algorithm will be used as examples.
@@ -51,7 +52,9 @@ Using these equations, the probability of selection for each chromosome in the p
 \[Child\, 2: [3,0,\colorbox{green}{2,5,1},4]\]
 \caption{Example of the crossover method used in the research algorithm. \label{fig:cross}}
 \end{figure}
-Crossover (also known as breeding) is when two chromosomes, called parents, are 'crossed' together to produce one or more children. There are many ways of doing this, from slicing the parents in half and swapping the ends, to more complicated methods like the one used in the research algorithm shown in Figure \ref{fig:cross}. 
+Crossover (also known as breeding) is when two chromosomes, called parents, are 'crossed' together to produce one or more children. There are many ways of doing this, from slicing the parents in half and swapping the ends, to more complicated methods like the one used in the research algorithm shown in Figure \ref{fig:cross}. These children are then used to replace the current pool, thus forming the next generation.
+\par
+A certain percentage of the population in the pool, called 'elites', is not replaced during crossover. This fraction of the pool consists of the fittest chromosomes, thus allowing these chromosomes to survive into future generations. The only way an chromosome can be removed from the elites, is if a fitter chromosome is found to replace it.
 \subsubsection{Mutation}
 \par
 \begin{figure}[H]
