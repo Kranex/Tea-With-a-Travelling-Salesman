@@ -31,7 +31,7 @@ B (1, 3.5)   & D (2.5, 7) &F (10, 1.5)\\
 \label{6citymap}
 \end{figure}
 
-\noindent These can be represented on a 2-dimensional map as shown in figure \ref{6citymap}. Knowing the coordinates of the points, the distance between every pair of points can be calculated, using the formula $XY=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$  for points $X(x_1, x_2)$ and $Y(y_1, y_2)$. The results can be represented as a matrix, where element in column $X$ and row $Y$ (as well as element in row $X$ and column $Y$) represents distance $XY$. For the given points A to F the matrix is shown in figure \ref{distancematrix}. In the future, it will be referred to as “the distance matrix”.
+\noindent These can be represented on a 2-dimensional map as shown in figure \ref{6citymap}. Knowing the coordinates of the points, the distance between every pair of points can be calculated, using the formula $XY=\sqrt{(x_1-y_1)^2+(x_2-y_2)^2}$  for points $X(x_1, x_2)$ and $Y(y_1, y_2)$. The results can be represented as a matrix, where element in column $X$ and row $Y$ (as well as element in row $X$ and column $Y$) represents distance $XY$. For the given points A to F the matrix is shown in figure \ref{distancematrix}. In the future, it will be referred to as `the distance matrix'.
 
 \begin{figure}[h] 
 	\centering
@@ -55,7 +55,7 @@ The Hungarian Algorithm is a method designed for the assignment problem, which i
 \noindent
 Begin with the distance matrix (figure \ref{distancematrix}). Identify the smallest element in every row, and subtract it from every element in that row; then do the same for every column. The resulting matrix will have a zero in each row and each column. As such, the original distance matrix reduces as shown in figure \ref{dmreduced}.
 
-\begin{figure}[ht] 
+\begin{figure}[H] 
 	\centering
 	\includegraphics[height=6cm]{dmreduced}
 	\vspace{-3mm}
@@ -67,7 +67,7 @@ In Little’s article, he elaborates on why this works, explaining:
 \vspace{-1mm}
 
 \begin{displayquote} 
-''If a constant is subtracted from each element of the first row (of the distance matrix), that constant is subtracted from the cost of every tour. This is because every tour must include one and only one element from the first row. The relative costs of all tours, however, are unchanged and so the tour which would be optimal is unchanged. The same argument can be applied to the columns.'' \cite{little}
+``If a constant is subtracted from each element of the first row (of the distance matrix), that constant is subtracted from the cost of every tour. This is because every tour must include one and only one element from the first row. The relative costs of all tours, however, are unchanged and so the tour which would be optimal is unchanged. The same argument can be applied to the columns.'' \cite{little}
 \end{displayquote}
 
 \vspace{3mm}	
@@ -76,7 +76,7 @@ In Little’s article, he elaborates on why this works, explaining:
 \vspace{1mm}
 
 \noindent	
-For each zero in the new matrix note the sum between the minimum element in the row and the minimum element in the column of that zero (omitting the zero itself). That number is called the penalty associated with the zero. Therefore, the penalty associated with the zero in position AB is 0.63, since the smallest element in row A is 0.63, and smallest element in column B is 0. Similarly, the penalty of the zero in position BD is 1.21, and so on. The complete matrix displaying all the penalties is shown in figure \ref{dmpenalties}.	
+For each zero in the new matrix note the sum between the minimum element in the row and the minimum element in the column of that zero (omitting the zero itself). That number is called the penalty associated with the zero. Therefore, the penalty associated with the zero in position AB is 0.63, since the smallest element in row A is 0.63, and smallest element in column B is 0. Similarly, the penalty of the zero in position BD is 1.21, and so on. The complete matrix displaying all the penalties is shown in figure \ref{dmpenalties}. It is interesting to note, that although Little’s work describes the same process, it does not refer to those numbers as `the penalties'.
 
 \begin{figure}[H] 
 	\centering
@@ -85,7 +85,6 @@ For each zero in the new matrix note the sum between the minimum element in the 
 	\caption{\textsl{Reduced distance matrix with penalties}}
 	\label{dmpenalties}
 \end{figure}	
-\noindent It is interesting to note, that although Little’s work describes the same process, it does not refer to those numbers as ''the penalties''.
 	
 \vspace{5mm}	
 
@@ -94,7 +93,7 @@ For each zero in the new matrix note the sum between the minimum element in the 
 \vspace{1mm}
 
 \noindent
-Select the zero with the highest penalty. If there is more than one zero with the same penalty, select arbitrarily. The row and column of that zero can be eliminated from the matrix, and its position noted down as part of the optimum tour. In our case the zero in position BD has the highest penalty. Therefore, BD is the first definitive road in the final optimum tour that we are working towards. Hence it can be eliminated from the matrix, as shown in figure \ref{dmelimination2}.
+Select the zero with the highest penalty. If there is more than one zero with the same penalty, select arbitrarily. The row and column of that zero can be eliminated from the matrix, and its position noted down as part of the optimum tour. In our case the zero in position BD has the highest penalty. Therefore, BD is the first definitive road in the final optimum tour that we are working towards. Hence it can be eliminated from the matrix, as shown in figure \ref{dmelimination2}. Note that in the new matrix, element DB becomes undefined, since it is no longer possible for that road to be selected.
 
 \begin{figure}[H] 
 	\centering
@@ -103,7 +102,6 @@ Select the zero with the highest penalty. If there is more than one zero with th
 	\caption{\textsl{Elimination of the selected road from the matrix}}
 	\label{dmelimination2}
 \end{figure}
-\noindent Note that in the new matrix, element DB becomes undefined, since it is no longer possible for that road to be selected.
 
 \vspace{5mm}
 \noindent
@@ -138,7 +136,7 @@ A $\rightarrow$ B $\rightarrow$ D $\rightarrow$ E $\rightarrow$ F $\rightarrow$ 
 \end{center}
 
 
-\begin{figure}[ht] 
+\begin{figure}[H] 
 	\centering
 	\includegraphics[height=7.5cm]{6citytour}
 	\caption{\textsl{Final tour}}
@@ -153,8 +151,9 @@ Looking back at the distance matrix (figure \ref{distancematrix}), the total dis
 \label{BIP}
 
 The optimum TSP tour can also be determined using a Binary Integer Program (BIP) formulation of the problem \cite{ORlecture}, as shown below.
-\noindent
-Let $x_{ij}$ be the distance between cities $i$ and $j$, given by the distance matrix in figure \ref{distancematrix} and let $y_{ij}$ be the binary decision variable such that:
+
+\vspace{5mm}
+\noindent Let $x_{ij}$ be the distance between cities $i$ and $j$, given by the distance matrix in figure \ref{distancematrix} and let $y_{ij}$ be the binary decision variable such that:
 
 \[
 y_{ij}= 
@@ -170,7 +169,7 @@ Then, the BIP formulation of the TSP is:
 \vspace{5mm}	
 
 \noindent
-Minimize
+Minimize:
 
 \vspace{-3mm}	
 \begin{center}
@@ -178,7 +177,7 @@ $z = \sum_{i} \sum_{j} x_{ij}y_{ij}$
 \end{center}	 
 
 \noindent
-such that
+such that:
 \vspace{-3mm}	
 \begin{center}
 	$\sum_{i} y_{ij}=1$ for all $j$,
@@ -200,7 +199,7 @@ Using the distance matrix from figure \ref{distancematrix} for the $x_{ij}$ valu
 	
 Given the distance matrix in figure \ref{distancematrix}, a reasonable poolsize and generation number, for example 200 and 1000 respectively, the GA is able to find the same solution for the problem as the BIP and the Hungarian Algorithm every time.
 
-The choice of poolsize is almost arbitrary, constrained only by a rather vague restriction of being ''reasonable''. So, naturally, one might wonder what that means. For a small problem like the one in question this choice is fairly simple. For 6 cities, the GA can produce $6!=720$ possible tours, which includes duplicates that start from different cities and ones that go in reverse directions. Removing those leaves $\frac{6!}{2\cdot{6}}=\frac{5!}{2}=60$ possible tours (recall the $\frac{(n-1)!}{2}$ formula). Hence, even with a poolsize as small as 60, an optimal solution is almost guaranteed in the initial pool already (almost, due to the randomness at the core of a GA). Increasing the poolsize will improve those chances, however if it is set too high there are some disadvantages. Section \ref{Analysis} of this article will explain in more detail the benefits of increasing the poolsize, as well as the drawbacks.
+The choice of poolsize is almost arbitrary, constrained only by a rather vague restriction of being `reasonable'. So, naturally, one might wonder what that means. For a small problem like the one in question this choice is fairly simple. For 6 cities, the GA can produce $6!=720$ possible tours, which includes duplicates that start from different cities and ones that go in reverse directions. Removing those leaves $\frac{6!}{2\cdot{6}}=\frac{5!}{2}=60$ possible tours (recall the $\frac{(n-1)!}{2}$ formula). Hence, even with a poolsize as small as 60, an optimal solution is almost guaranteed in the initial pool already (almost, due to the randomness at the core of a GA). Increasing the poolsize will improve those chances, however if it is set too high there are some disadvantages. Section \ref{Analysis} of this article will explain in more detail the benefits of increasing the poolsize, as well as the drawbacks.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Performance Evaluation}	
