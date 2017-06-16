@@ -1,11 +1,11 @@
-\section{How does the GA perform on a TSP of a larger scale?}
+\section{How does the GA perform on a TSP of a larger scale?} \label{largeTSP}
 
 \par
 Considering the characteristics of a Genetic Algorithm, one can assume that they are not the standard method to use on problems of such a small scale as the problem discussed in the previous section, since manual or traditional methods can give the solution as well. GAs hold their real value in problems of a larger scale. Here they are capable of giving a feasible solution, where most other methods fail to give one or are just highly inefficient. The constructed GA has proved itself capable of dealing with a simple TSP containing six cities, but how does it perform on a TSP of a larger scale? This section will discuss the answer to that question, explaining the obstacles encountered along the way.
 \par
 The details of the TSP, such as the number of cities and their locations, will be addressed in section \ref{tsp}. Then in section \ref{perf}, the performance of the GA on this TSP will be discussed. Since the total of possible tours was relatively low for the simple TSP, discussed in the previous section, the GA was capable of finding the optimal tour in every run. In this larger TSP however, the number of tours is significantly larger, which meant that the GA did not find the optimal tour in every run. This problem is known as premature convergence and is the topic of the section \ref{premc}. A possible method to prevent premature convergence is the topic of section \ref{incest} and in the last section the conclusions are discussed.
 
-\subsection{A TSP containing 26 cities} \label{tsp}%Introducing the 26 cities TSP
+\subsection{A TSP containing 26 cities} \label{tsp} %Introducing the 26 cities TSP
 \par
 For this expansion it was decided to extend the problem to 26 cities. To make the problem more realistic, these 26 cities were selected to be located throughout the Netherlands. 
 
@@ -52,7 +52,7 @@ For this expansion it was decided to extend the problem to 26 cities. To make th
 	\end{minipage}
 \end{table}
 
-The 26 cities are listed in alphabetical order together with a map of the Netherlands (figure \ref{map1}), that marks all of their locations. The objective is thus to find the shortest route that visits all of these cities and returns to the starting point afterwards. The total number of possible tours here is calculated by the equation: %future reference needed
+\noindent The 26 cities are listed in alphabetical order together with a map of the Netherlands (figure \ref{map1}), that marks all of their locations. The objective is thus to find the shortest route that visits all of these cities and returns to the starting point afterwards. The total number of possible tours here is calculated by the equation: %future reference needed
 \[n = \frac{(26-1)!}{2} =  7.755605e+24.\]
 This number is significantly larger than the 60 possible tours for the simple TSP, discussed in section 2. This is then also the reason why most other methods fail to give a solution or are just inefficient. The manual methods and traditional methods, discussed in the previous section, are excellent examples. The Hungarian Algorithm already took 2 hours to perform on a TSP, containing only six cities and even though it did give the optimal solution in the end, it is highly inefficient to apply to this TSP because of the time it would take. In addition, this algorithm is a manual method, which makes it susceptible for human errors. The BIP also fails to give a solution, because the number of integer variables exceeds the limit of the Microsoft Excel linear solver. Even without this limit of variables, a BIP would take a long time to construct, considering all the possible subtours that would have to be added to the program as constraints in order to make sure that the resulting tour meets the criteria, set by the TSP. All of these subtours have to be excluded by manually adding these constraints, which makes the BIP timewise an inefficient method. Therefore it is necessary to turn to other methods, such as Genetic Algorithms. Even though they are not bound to give the optimal solution, they are at least capable of giving a suitable tour that meets the criteria, set by the TSP.
 
@@ -103,7 +103,7 @@ There are different methods of dealing with premature convergence. H. Pandey, A.
 \[\textit{Parent 1}: [-,1,2,3,-,-]\]       
 \[\textit{Parent 2}:[0,-,-,-,4,5]\]
 
-This leads to: \[\textit{Child 1}: [0,1,2,3,4,5]\]
+\noindent This leads to: \[\textit{Child 1}: [0,1,2,3,4,5]\]
 \par
 From this first child, it can be easily seen that the second child will also be identical to the parents and its sibling. However, this only happens, when both of the parents are completely identical, meaning that both their tour and starting location have to be the same. For example a crossover between the parents, depicted below, does not necessarily lead to a child that is identical to the parents, even though they share the same tour:
 
@@ -115,7 +115,7 @@ In the first crossover, where a subset from the first parent is selected and the
 \[\textit{Parent 2}: [-,-,4,5,0,-]\]
 This leads to: \[\textit{Child 1}: [4,1,2,3,5,0]\]
 
-Even though both parents contained the same tour, their child does not share it. Incest prevention therefore focuses on only eliminating crossovers between two identical parents. Incest prevention therefore focuses on only eliminating crossovers between two identical parents.
+\noindent Even though both parents contained the same tour, their child does not share it. Incest prevention therefore focuses on only eliminating crossovers between two identical parents. Incest prevention therefore focuses on only eliminating crossovers between two identical parents.
 
 \par
 In order to implement incest prevention in the GA, an adjusted form of tournament selection was used. The first parent is still selected by means of probability based on its fitness. However, the second parent is now selected by a tournament of a set number of chromosomes. The winner of the tournament is the chromosome that is most different to the already selected first parent. If all candidates in the tournament are identical to the first parent, the program will dismiss the tournament and start a new one. This process goes on until a different chromosome is found. 
