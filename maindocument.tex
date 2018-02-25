@@ -48,7 +48,8 @@ Rijksuniversiteit Groningen}
 \maketitle
 \clearpage
 \begin{abstract}
-Abstract needs to be copied here!
+\noindent
+The Travelling Salesman Problem (TSP) is a famous problem in combinatorial optimization with a wide range of application in the real world. Its importance has been recognized many years ago, as well as its complexity, and to this day no effective solution method has been found. This article focuses on the question ``How do Genetic Algorithms perform when applied to The Travelling Salesman Problem?''. It addresses the topics of constructing and applying a Genetic Algorithm (GA) to the Travelling Salesman Problem, evaluating its efficiency in comparison to the traditional methods and investigating its performance as the TSP expands. The GA's advantages and disadvantages are addressed in order to discuss the performance of the GA, when applied to the TSP. Conclusions were made on the performance of the GA. When applied to a TSP of a small scale the GA tends to converge to the optimal tour in every run. On a TSP of a larger scale, the GA is able to find a near optimum solution in every run within minutes.
 \end{abstract}
 
 \clearpage
@@ -56,12 +57,16 @@ Abstract needs to be copied here!
 
 %The various chapters
 \input{Introduction}
+\input{IntroTSP}
 \input{WhatIsAGeneticAlgorithm}
-%\input{SimpleTSP}
+\input{SimpleTSP}
 \input{GAonlargerscale}
 \input{analysis}
 \input{Conclusion}
 \input{References}
+
+\appendix
+\input{AppendixFullHA}
 
 \end{document}
 

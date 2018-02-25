@@ -1,24 +1,17 @@
+\newpage 
 \section{Introduction}
 
 \par
 The Travelling Salesman Problem (TSP) is a famous problem in combinatorial optimization, with the goal to minimize the total travel cost (be that time, distance, or fuel expenses) for a salesman who has to visit a finite number of cities and return to the starting point, given the costs associated with travelling from one city to another.
 
-\vspace{5mm}
 \par
 At first the problem may appear uncomplicated and straightforward, however its simplicity is only an illusion. Although the exact origins of the TSP are unclear, it can be dated back to at least 1832, yet to this day, there has been no effective solution method found for a general case. In fact, a solution of this problem would resolve the infamous P vs. NP Millennium Prize problem. As a result, the Travelling Salesman Problem still remains one of the most intensely studied problems in computational mathematics and in the recent years has sparked interests in newer fields, such as computer science.
 
-\vspace{5mm}
 \par
-Throughout the years, different methods and algorithms have been developed for the TSP. Many of the traditional methods involve heuristics such as Nearest Neighbor or Nearest Insertion, or relaxations, for example the Hungarian Algorithm. However, these do not necessarily give the optimal, and for the latter sometimes not even a feasible solution. Moreover, these methods become insufficient when the problem takes a larger scale.
+Throughout the years, different methods and algorithms have been developed for the TSP. Many of the traditional methods involve heuristics such as Nearest Neighbor or Nearest Insertion, or relaxations, for example the Hungarian Algorithm. However, these do not necessarily give the optimal, and for the latter sometimes not even a feasible solution. Moreover, these methods become insufficient when the problem takes a larger scale. An example of a more advanced, newer method would be the application of a Genetic Algorithm. Genetic Algorithms (GAs) are algorithms designed to simulate natural evolution: they are based on the concept of `survival of the fittest'.
 
-\vspace{5mm}
 \par
-An example of a more advanced, newer method would be the application of a Genetic Algorithm. Genetic Algorithms (GAs) are algorithms designed to simulate natural evolution: they are based on the concept of “survival of the fittest”.
+This article will address the topic of applying a Genetic Algorithm to the Travelling Salesman Problem, focusing on the following question: ``How do Genetic Algorithms perform when applied to the Travelling Salesman Problem?''. In order to provide an answer to this question, the TSP will be discussed in more detail in section \ref{IntroTSP}. After that, the general concept of a GA will be explained in section \ref{WisGA}, including an insight into the construction of such an algorithm for the TSP. In section \ref{SimpleTSP} the constructed GA will be applied to a small problem of 6 cities, where the efficiency of the algorithm will be evaluated in comparison to the traditional methods. Section \ref{largeTSP} will focus on investigating the performance of the GA on an expanded problem of 26 cities, including a discussion of the issues encountered, followed by a detailed analysis of the parameters within the constructed GA in section \ref{Analysis}. In the final section conclusions will be made, addressing the initial research question.
 
-\vspace{5mm}
-\par
-This article will address the topic of applying a Genetic Algorithm to the Travelling Salesman Problem, focusing on the following question: “How do Genetic Algorithms perform when applied to the Travelling Salesman Problem?”. In order to provide an answer to this question, the general concept of a GA will be explained in detail in chapter 1, including an insight into the construction of such an algorithm for the TSP. In chapter 2 the constructed GA will be applied to a small problem of 6 cities, where the efficiency of the algorithm will be evaluated in comparison to the traditional methods. Chapter 3 will focus on investigating the performance of the GA on an expanded problem of 26 cities, and chapter 4 will include a detailed analysis of the parameters within the constructed GA. In the final chapter the performance of the GA on a TSP of 50 cities will be investigated. This chapter also includes a discussion of the issues encountered.
-
-\vspace{5mm}
 
 
